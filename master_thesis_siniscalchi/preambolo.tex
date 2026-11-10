@@ -1,0 +1,111 @@
+%Formattazione e codifica caratteri
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{sansmathfonts}
+% Tavola dei contenuti
+\usepackage{tocloft}
+\renewcommand{\cftdot}{}
+\setlength{\cftbeforechapskip}{5pt}
+% Figure
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subfig}
+\usepackage{svg}
+\usepackage{float}
+% Matematica
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{color}
+% Tabelle
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{booktabs}
+%Listati
+\usepackage{listings}
+\lstloadlanguages{MATLAB}
+% Testatine
+%\author{A. Siniscalchi}
+\usepackage{fancyhdr}
+\usepackage{epigraph}
+\usepackage{titlesec, blindtext}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz-network}
+\usepackage{pgfplots}
+ \pgfplotsset{compat=newest}
+  \usetikzlibrary{plotmarks}
+  \usetikzlibrary{arrows.meta}
+  \usepgfplotslibrary{patchplots}
+  \usepackage{grffile}
+
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{hyperref}
+\pgfplotsset{plot coordinates/math parser=false}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+\fancyhead[LE,RO]{}
+\fancyhead[RE,LO]{\leftmark}
+\fancyfoot[CE,CO]{}
+\fancyfoot[LE,RO]{\thepage}
+
+\renewcommand{\headrulewidth}{1.5pt}
+% Titoli dei capitoli che "rubano" meno spazio
+
+\definecolor{gray75}{gray}{0.75}
+\newcommand{\hsp}{\hspace{15pt}}
+
+\SetVertexStyle[MinSize=1\DefaultUnit,FillColor=white]
+
+
+% Per importare le figure in MATLAB
+  \newlength\figureheight
+ \newlength\figurewidth
+%Per le osservazioni
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{obs}[thm]{Observation} 
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary} 
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}[thm]{Example} 
+\newtheorem{cla}[thm]{Claim} 
+\newtheorem{as}[thm]{Assertion}
+\newtheorem{note}[thm]{Note}
+\newtheorem{defn}[thm]{Definition}
+
+%COMANDI PERSONALIZZATI 
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\B}{\mathbb{B}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\s}{\mathbb{S}}
+\newcommand{\torus}{T_{2, 2g+1}}
+\newcommand{\tonde}[1]{\left( #1 \right)}
+\newcommand{\ses}{\Leftrightarrow} 
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\angol}[1]{\langle #1 \rangle}
+\newcommand{\spa}{\mathbin{\textcolor{white}{-}}} 
+\newcommand{\q}[1]{``#1''}
+\newcommand{\inter}{\nu(K_m)^{\mathrm{o}}}
+\newcommand{\interd}{\nu(D')^{\mathrm{o}}}
+\newcommand{\estd}{\mathbb{B}^4 \setminus \nu(D)^{\mathrm{o}}}
+\newcommand{\estdi}{\mathbb{B}^4 \setminus \nu(D')^{\mathrm{o}}}
+\newcommand\restr[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \littletaller % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+  }}
+\newcommand{\littletaller}{\mathchoice{\vphantom{\big|}}{}{}{}}
+
+% per mettere le figurelle
+%\begin{figure}[h]
+    %\centering
+    %\includegraphics[scale=0.25]{figures/prova.jpeg}
+    %\caption{Caption}
+    %\label{fig:evviva ho messo una figura}
+%\end{figure}
+%faccio riferimento \ref{fig:evviva ho messo una figura}

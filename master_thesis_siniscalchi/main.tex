@@ -1,0 +1,181 @@
+\documentclass[12pt,a4paper,oneside]{book}
+\input{preambolo}
+% Comando per il testo riempitivo: rimuovere prima della fine
+%report
+\begin{document}
+%\usepgfplotslibrary{external} 
+%\tikzexternalize[prefix=tikz/]
+\titleformat{\chapter}[display]{\large\centering}{CHAPTER \thechapter}{5pt}{\centering\bfseries}[\vskip 15pt]  
+\titleformat{\section}[hang]{\normalsize\bfseries}{\thesection.{ }}{0pt}{\centering}[{\vskip 10pt}]
+\titleformat{\subsection}[hang]{\normalsize\bfseries}{\thesubsection.{ }}{0pt}{}[{\vskip 5pt}]
+
+\begin{titlepage}
+\begin{figure}[t]
+	\centering\includegraphics[width=0.35\textwidth]{figures/stemma_unipi.png}\\[1em]
+	{\LARGE \textsc{Università di Pisa}}\\
+	\vspace*{-0.5em}\rule{0.6\textwidth}{0.4pt}
+\end{figure}
+\begin{center}
+	\textbf{Dipartimento di Matematica \\ Corso di Laurea Magistrale in Matematica\\}
+	\vspace{15mm}
+	{\centering Tesi di Laurea Magistrale}\\[1em]
+    {\LARGE{\bf On Exotic Symplectic Surfaces \\ in Convex $4$-Manifolds}}\\
+	\vspace{3mm}
+	
+\end{center}
+
+\vspace{36mm}
+
+\begin{minipage}[t]{0.47\textwidth}
+	{\large{\bf Relatore:\\Prof. Paolo Lisca \\ \\
+     Controrelatore:\\Prof. Carlo Petronio}}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}\raggedleft
+	{\large{\bf Candidato:\\Alessio Siniscalchi}}
+\end{minipage}
+
+
+\vfill
+\centering{\rule{0.5\textwidth}{0.4pt}}\\
+\centering{\large{\bf Anno Accademico 2023/2024 }}
+
+\end{titlepage}
+\addcontentsline{toc}{chapter}{Abstract}
+\chapter*{Abstract}
+A pair of smoothly embedded surfaces in a $4$-manifold $X$ is said to be exotic if they are topologically isotopic but not smoothly isotopic. We first describe Hayden's construction of infinitely many pairs of exotic, symplectic ribbon disks in $\B^4$. We then present a simpler example in the topological setting. The construction is explicit, allowing the resulting disks to be drawn by hand. By capping these disks off in larger $4$-manifolds, we obtain infinite pairs of exotic closed surfaces. Finally, we discuss extensions to the higher-genus case.
+\addcontentsline{toc}{chapter}{Notations}
+\chapter*{Notations}
+In the section, we list some common notations used in this thesis. 
+\begin{itemize}
+\item $X$ denotes a $4$ manifold, since it has a degree $4$ point
+\item $Y$ denotes a $3$ manifold, since it has a degree $3$ point
+\item $B^4$: the unit $4$ dimensional ball
+\item $\s^3$: the boundary of $\B^4$
+\item $T_{m, n}$: the torus knot of type $(m, n)$
+\item $\nu(K)$: a tubular neighbourhood of a knot
+\item $tb(K)$: the Thurston Bennequin number of $K$
+\item $Y(K)_{\frac{m}{n}}$: $\frac{m}{n}$-framed surgery along $K$
+\item $F \cdot F'$: the intersection number of two embedded surfaces in $X$
+\item $Diff(M)$: the set of diffeomorphisms of $M$, up to isotopy
+\item $Isom(M)$: the isometry group of a hyperbolic manifold
+\item $\xi_{st}$: the standard contact form on $\s^3$
+\item $\omega_{st}$: the standard symplectic form on $\R^4$
+\item $\mathfrak{L}_v$: the Lie derivative along the vector field $v$
+\end{itemize}
+
+\cleardoublepage
+\tableofcontents
+\addcontentsline{toc}{chapter}{Introduction}
+\chapter*{Introduction}
+Let $X$ be a smooth $4$-manifold. 
+\begin{defn} Two smoothly embedded surfaces $S, S' \subseteq X$ are said to be exotic if they are isotopic through homeomorphisms of $X$ but not through diffeomorphisms of $X$. 
+\end{defn}
+The study of exotic surfaces is motivated by the following major open question.\\
+\\
+\textbf{Open Problem} \\
+Do exotic, closed, orientable surfaces exist in $\s^4$? \\ \\
+Much progress in this area has been driven by questions arising from complex geometry. If $X$ is a simply connected Kahler surface, then two homologous, closed, complex curves are smoothly isotopic. On the other hand, when $X$ is only required to be smooth, then there are examples of infinite families of surfaces that are pairwise exotic. \\ \\
+\textbf{Why the Symplectic Setting?} \\
+The symplectic setting is balanced between the rigidity of closed complex curves and the flexibility of arbitrary smooth surfaces. Fintushel and Stern constructed some symplectic $4$-manifolds each containing a pair of symplectic surfaces that are homologous but not smoothly isotopic \cite{fintushel1999symplectic}.
+The existence of infinitely many pairs of properly embedded exotic, positive genus surfaces in $\B^4$ was independently established by Hayden in \cite{hayden2021exoticallyknotteddiskscomplex} and by Juhàsz, Miller and Zemke in \cite{Juh_sz_2021}. \\ \\
+\textbf{Hayden's Contribution} \\
+Hayden proved the genus zero case, demonstrating the existence of exotic disks properly embedded in $\B^4$ and exotic spheres in knot traces. In addition, his construction guaranteed that both surfaces are symplectic, whereas in the earlier work, at least one of them is not symplectic.
+\\ \\
+In this thesis, following the work of Hayden, we construct infinite pairs of exotic, symplectic surfaces properly embedded $\B^4$, with arbitrary genus. \\
+A key advantage of Hayden’s approach is its explicit nature, allowing the resulting surfaces to be drawn by hand. Moreover, it applies in both topological and symplectic settings, enabling further exploration of related phenomena. \\
+Beyond constructing these exotic surfaces, this thesis compares different strategies for proving exoticness and provides a detailed exposition of Hayden’s techniques, including useful tricks and insights. \\ \\
+For the reader's convenience, we outline the structure of this thesis:
+\begin{itemize}
+\item Chapters 1 \& 2: A review of Kirby calculus and the theory of Stein $4$-manifolds, alongside with the symplectic tools necessary for proving our main theorems.
+\item Chapter 3: The construction of infinitely many pairs of exotic (relatively to the boundary), symplectic ribbon disks properly embedded in $\B^4$, alongside with a simpler example in the topological setting. Additionally, we discuss how exotic surfaces yield exotic $4$-manifolds with boundary (see Corollary \ref{giotto}).
+\item Chapter 4: The construction of infinitely many pairs of exotic, symplectic spheres in larger convex $4$-manifolds, completing our discussion on the minimal topology setting (i.e. genus-$0$ surfaces).
+\item Chapter 5: The extension of these constructions to higher genus surfaces by attaching bands.
+\end{itemize}
+
+This thesis includes more than 120 hand-drawn figures to illustrate the constructions and techniques.
+
+\include{cap1}
+\include{cap2}
+\include{cap3}
+\include{cap4}
+\include{cap5}
+\addcontentsline{toc}{chapter}{Appendix}
+\chapter*{Appendix}\label{app}
+The following Figure shows that purple band surgery (Figure \ref{fig:triv4}(p)) turns $K_m$ into two meridians for the red circle.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.18]{figures/trade.jpeg}
+    \caption{Purple band surgery}
+    \label{fig:trade}
+\end{figure}
+\newpage
+\textbf{Snappy Computation} \\ \\
+We draw $K_m$ and $K_m \cup \gamma$ using KnotFolio\cite{knotfolio}, and we extract the Dowker-Thistlethwaite code. Then we run Snappy\cite{snappy} inside Sage\cite{sagemath}, in order to verify that $\s^3 \setminus K_0$ is hyperbolic and asymmetric. 
+\begin{lstlisting}[language=Python]
+import snappy 
+In : K = snappy.Manifold('DT: [12, -64, 52, 20, -70, -30, -40, 2,
+-28, -72, 34, -44, -54, -4, 62, 68, -58, 24, 76, -14, 66, 56, -22,
+-32, 10, 18, -74, -36, 46, -8, -50, -16, 38, -78, -48, 60, -6, 26,
+-42]')
+K.solution_type()
+Sage: 'all tetrahedra positively oriented'
+In: K.verify_hyperbolicity()
+Sage: (True,
+ [0.93909513959? + 0.69095521566?*I,
+  0.70707736232? + 0.93434842099?*I,
+  1.52329395723? + 1.17752544467?*I,
+  0.914749822027? + 0.628167321490?*I,
+  -0.044422324121? + 0.404742729817?*I,
+  -0.79978748449? + 0.31543544271?*I,
+  1.124693783715? + 0.56925610185?*I,
+  -0.05030425521? + 0.43711071362?*I,
+  0.20238398208? + 0.45593871701?*I,
+  1.086142103954? + 0.129177745136?*I,
+  1.59150798543? + 0.64681487788?*I,
+  0.34662975836? + 0.316285444394?*I,
+  0.3682794911? + 12.5174820220?*I,
+  0.83411890077? + 2.17547326363?*I,
+  0.434120938316? + 0.486073861164?*I,
+  0.58163452576? + 3.14286632765?*I,
+  0.837518749600? + 0.430787981471?*I,
+  -3.82632505439? + 4.30891057294?*I,
+  0.51914091788? + 0.99861023843?*I,
+  0.595092596715? + 0.409748194190?*I,
+  0.78098699952? + 0.86961413751?*I,
+  0.57918637538? + 0.94075132289?*I,
+  0.363856100126? + 0.219817027992?*I])
+In : R = K.canonical_retriangulation(verified = True)
+In : len(R.isomorphisms_to(R))
+Sage : 1 #this is the cardinality of the isometry group
+\n \n
+import snappy
+In: Twocomponents= Link([(91,81,92,80), (81,89,82,88), 
+(20,83,21,84), (13,43,14,42), (2,61,3,62), (27,63,28,62), 
+(55,12,56,13), (84,19,85,20), (70,5,71,6), (9,83,10,82), 
+(45,7,46,6), (85,11,86,10), (22,8,23,7), (31,19,32,18), 
+(60,41,61,42), (14,73,15,74), (38,26,39,25), (86,30,1,29), 
+(39,4,40,5), (76,4,77,3), (37,49,38,48), (71,59,72,58), 
+(46,23,47,24), (43,17,44,16), (44,57,45,58), (69,25,70,24), 
+(59,75,60,74), (30,11,31,12), (8,33,9,34), (1,55,2,54), 
+(56,18,57,17), (77,26,78,27), (28,53,29,54), (72,15,73,16), 
+(21,33,22,32), (79,67,80,66), (68,48,69,47), (78,49,79,50), 
+(90,35,91,36),(52,64,53,63), (36,67,37,68), (92,65,93,66), 
+(51,87,52,94), (93,51,94,50), (34,89,35,90), (64,87,65,88), 
+(40,76,41,75)]) 
+In: K = Twocomponents.exterior()
+In: K.solution_type()
+Sage: 'all tetrahedra positively oriented'
+In : K.simmetry_group()
+Sage: 0
+\end{lstlisting}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\bibliographystyle{alpha}
+
+\cleardoublepage
+\listoffigures
+\addcontentsline{toc}{chapter}{List of figures}
+
+\end{document}
+    
